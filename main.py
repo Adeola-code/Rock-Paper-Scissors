@@ -1,5 +1,5 @@
 import random
-
+#CHARACTERS FOR ROCK, PAPER AND SCISSORS
 rock = '''
     _______
 ---'   ____)
@@ -27,46 +27,28 @@ scissors = '''
 ---.__(___)
 '''
 
-#Ask for Input
-user_choice = str(
-    input(
-        "What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors."))
-
+game_images = [rock, paper, scissors]
+#ASK USER FOR INPUT
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+#USER LOSES IF HIS INPUT IS NOT 0, 1 OR 2
+if user_choice >= 3 or user_choice < 0: 
+  print("You typed an invalid number, you lose!")
+else:
+  print(game_images[user_choice])
+#DISPLAY THE COMPUTER'S CHOICE
 computer_choice = random.randint(0, 2)
-computer_choice = str(computer_choice)
-#To print the images of the choices
-#You can also use a set for this
-if user_choice == "0":
-    print("You chose")
-    print(rock)
-elif user_choice == "1":
-    print("You chose")
-    print(paper)
-elif user_choice == "2":
-    print("You chose")
-    print(scissors)
-elif computer_choice == "0":
-    print("Computer chose")
-    print(rock)
-elif computer_choice == "1":
-    print("Computer chose")
-    print(paper)
-elif computer_choice == "2":
-    print("Computer chose")
-    print(scissors)
-#Game Logic
-if user_choice == computer_choice:
-    print("It's a draw!")
+print("Computer chose:")
+print(game_images[computer_choice])
 
-elif user_choice == "0" and computer_choice == "1":
-    print('You lose')
-elif user_choice == "0" and computer_choice == "2":
-    print('You won')
-elif user_choice == "1" and computer_choice == "0":
-    print("You won!")
-elif user_choice == "1" and computer_choice == "2":
-    print("You lose")
-elif user_choice == "2" and computer_choice == "1":
-    print("You won!")
-elif user_choice == "2" and computer_choice == "0":
-    print("You lose")
+#GAME LOGIC
+if user_choice == 0 and computer_choice == 2:
+  print("You win!")
+elif computer_choice == 0 and user_choice == 2:
+  print("You lose")
+elif computer_choice > user_choice:
+  print("You lose")
+elif user_choice > computer_choice:
+  print("You win!")
+elif computer_choice == user_choice:
+  print("It's a draw")
+
